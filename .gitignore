@@ -9,3 +9,6 @@ gerenciamento.md
 
 # Virtual environments
 .venv
+
+# env config
+.env
