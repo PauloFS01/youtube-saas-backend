@@ -12,3 +12,6 @@ gerenciamento.md
 
 # env config
 .env
+
+# local configs
+.vscode/

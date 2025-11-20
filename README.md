@@ -4,8 +4,8 @@ uv sync
 ```
 ### Run
 ```bash
+uvicorn main:app --reload
 uv run uvicorn app.main:app --reload
-uvicorn server:app --reload
 ```
 ### Troubleshooting
 ```bash
