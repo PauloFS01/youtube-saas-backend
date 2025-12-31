@@ -7,7 +7,6 @@ class YouTubeService:
         self.api_key = settings.YOUTUBE_API_KEY
         self.base_url = settings.YOUTUBE_BASE_URL 
 
-
     async def get_paylist_by_id(self, playlist_id: str ):
         search_url = f"{self.base_url}/playlists"
         params = {
@@ -23,7 +22,7 @@ class YouTubeService:
                 return {
                     "playlist_id": playlist_id,
                     "title": items[0]["snippet"]["title"],
-                    "descritption": items[0]["snippet"]["description"],
+                    "description": items[0]["snippet"]["description"],
                     "thumbnail": items[0]["snippet"]["thumbnails"]["high"]["url"],
                 }
                 
