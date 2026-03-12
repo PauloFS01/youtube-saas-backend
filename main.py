@@ -1,8 +1,10 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+
 from app.core.config import settings
 from app.api.routes import videos
 from app.api.routes import users
+from app.utils.security import create_access_token, get_decoded_data
 
 app = FastAPI(title=settings.APP_NAME, debug=settings.DEBUG)
 
@@ -24,3 +26,13 @@ async def root():
 @app.get("/health")
 async def health_check():
     return {"status": "healthy"}
+
+@app.post("/token")
+async def token_test(data: dict):
+    encoded = create_access_token(data)
+    return encoded
+
+@app.post("/detoken")
+async def decode_test(data: dict):
+    decoded = get_decoded_data(data)
+    return decoded

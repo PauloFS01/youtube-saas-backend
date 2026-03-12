@@ -1,4 +1,6 @@
 # use youtube-transcription-api
+from fastapi import APIRouter, HTTPException, Query, Request
+
 from youtube_transcript_api import YouTubeTranscriptApi
 from app.core.config import settings
 class ScrapingService:
@@ -9,15 +11,12 @@ class ScrapingService:
     async def get_transcription(self, id: str):
         ytt_api = YouTubeTranscriptApi()
         try:
-            raise Exception("Erro simulado para testes - falha na API externa")
             fetched_transcript = ytt_api.fetch(id, languages=["pt", "en"])
             raw_transcription = fetched_transcript.to_raw_data()
             text = [snippet["text"] for snippet in raw_transcription]
             full_text = ' '.join(text)
-            print(full_text)
             return{
                 "transcript": full_text
             }
         except Exception as e:
-            print(f"erro: {e}")
-            raise
+            raise HTTPException(status_code=404, datails= e)

@@ -38,6 +38,7 @@ class YouTubeService:
         }
         try:
             response = requests.get(search_url, params=params) 
+            # print("youtube response: ", response.json())
             items = response.json().get("items",[])
 
             videos = []

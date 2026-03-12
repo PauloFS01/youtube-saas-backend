@@ -18,6 +18,16 @@ class Settings():
     # CORS
     FRONTEND_URL: str = os.getenv("FRONTEND_URL", "")
     
+    # Database
+    DATABASE_URL: str = os.getenv("SUPABASE_PROJECT_URL", "")
+    DATABASE_KEY: str = os.getenv("SUPABASE_PUBLISHABLE_API_KEY", "")
+    DATABASE_SECRET_KEY: str = os.getenv("SUPABASE_SECRET_KEY", "")
+
+    # jwt
+    TOKEN_SECRET_KEY = os.getenv("JWT_SECRET_KEY", "")
+    TOKEN_ALGORITHM = os.getenv("ALGORITHM", "")
+    EXPIRES = os.getenv("ACCESS_TOKEN_EXPIRES_MINUTES")
+
     class Config:
         env_file = ".env"
 
